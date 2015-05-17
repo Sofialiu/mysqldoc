@@ -40,9 +40,13 @@ WordPress是一种使用非常广泛的CMS系统。本文介绍如何使用 MySQ
 
 ### 2. 连接配置MySQL数据库
 将第二步所创建数据库的详细配置信息填入下图界面中。
+
 ![连接WordPress][6] 
+
 当您看到下图所示，表示您的WordPress与MySQL的连接已经成功了。
+
 ![成功连接WordPress][7] 
+
 点击进行安装，完成您的WordPress部署工作。
 
 
