@@ -11,7 +11,8 @@ WordPress是一种使用非常广泛的CMS系统。本文介绍如何使用 MySQ
 
 ## 步骤 2：新建MySQL Database on Azure的服务器
 您可以通过[Windows Azure管理门户](https://manage.windowsazure.cn)创建您的MySQL服务器。
-	![创建MySQL服务器][1]
+![创建MySQL服务器][1]
+
 > **注意** 将下图中允许的服务设置成“是”以便允许Azure Web应用链接此MySQL服务器。（默认选项是“否”）
 
 ![允许的服务][2]
@@ -30,6 +31,7 @@ WordPress是一种使用非常广泛的CMS系统。本文介绍如何使用 MySQ
 ### 部署WordPress安装文件
 接下来，将第一步中解压出来的所有WordPress安装文件部署到刚创建的Web应用中。这里建议使用Git来做部署操作。具体方式请参见[从源控件发布到 Azure 网站](http://www.windowsazure.cn/documentation/articles/web-sites-publish-source-control/)
 
+> **注意** 步骤3 主要针对WordPress的新用户，若您已经使用Azure Web应用并已成功部署WordPress安装文件并开始使用，出于内容一致性的目的，建议您将数据进行导出，重新安装部署WordPress之后，再进行数据导入。
 
 ## 步骤 4:安装配置WordPress
 
@@ -65,3 +67,4 @@ WordPress是一种使用非常广泛的CMS系统。本文介绍如何使用 MySQ
 [6]: ./img/006.png
 [7]: ./img/007.png
 [8]: ./img/008.png
+[9]: ./img/009.png
