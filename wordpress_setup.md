@@ -18,11 +18,12 @@ WordPress是一种使用非常广泛的CMS系统。本文介绍如何使用 MySQ
 ![允许的服务][2]
 
 
-### 新建供WordPress使用的MySQL数据库
+### 新建供WordPress使用的MySQL数据库（必备步骤）
 将工作区切至“数据库”，点击屏幕下方“新建”按钮进行数据库的创建。
 
 ![新建数据库][3]
 
+> **注意** 用户需在管理门户中手动创建MySQL数据库。如果忽略此步骤，将会造成WordPress部署失败。
 
 ## 步骤 3:新建Web应用
 详细步骤请参阅 [如何创建和部署Web应用](http://www.windowsazure.cn/manage/services/web-sites/how-to-create-websites/)
