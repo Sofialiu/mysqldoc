@@ -1,4 +1,8 @@
-# 如何使用MySQL Database on Azure来配置WordPress网站
+<properties linkid="" urlDisplayName="" pageTitle="如何使用MySQL Database on Azure来配置WordPress网站- Azure 微软云" metaKeywords="Azure 云，技术文档，文档与资源，MySQL,数据库，WordPress, 网站配置" description="
+WordPress是一种使用非常广泛的CMS系统。本文介绍如何使用 MySQL Database on Azure 和Azure Web应用来安装配置WordPress。" metaCanonical="" services="MySQL" documentationCenter="Services" title="" authors="" solutions="" manager="" editor="" />
+
+<tags ms.service="mysql" ms.date="" wacn.date=""/>
+# 如何使用MySQL Database on Azure来配置WordPress网站<sup style="color: #a5ce00; font-weight: bold; text-transform: uppercase; font-family: '微软雅黑'; font-size: 20px;" class="wa-previewTag"></sup>
 
 
 
