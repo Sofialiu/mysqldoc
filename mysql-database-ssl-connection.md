@@ -17,15 +17,21 @@
 您可以通过您熟悉的MySQL客户端或语言进行SSL证书的加载配置，本文列举三种常见的配置方法，供您参考。
 ### 方法一：利用命令行进行配置
 打开mysql.exe, 命令行键入 '--ssl-ca= localpath/certname.pem -u username -p -h hostname' 通过SSL加密访问MySQL Database。
+
 ![mysql.exe访问数据库][1]
+
 SSL状态中出现Cipher in use即证明加密成功。
 
 
 ### 方法二：利用MySQL客户端进行配置
 以MySQL Workbench为例，通过Parameters标签设置访问数据库的Connection String，如下图所示。
+
 ![配置connection string][2]
+
 通过SSL标签配置SSL证书.
+
 ![配置SSL证书][3]
+
 >**注意** 在Use SSL中选择‘If Available’，否则可能会造成配置失败。 在Test Connection过程中可能会提示SSL not enabled，这是一个假预警，点击确认后连接数据库，通信过程已加密。
 >
 >![errormessage][4]
