@@ -20,7 +20,7 @@
 
 ![mysql.exe访问数据库][1]
 
-SSL状态中出现Cipher in use即证明加密成功。
+>**提示** SSL状态中出现Cipher in use即证明加密成功。
 
 
 ### 方法二：利用MySQL客户端进行配置
