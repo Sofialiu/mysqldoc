@@ -11,7 +11,7 @@
 
 
 ## 步骤 1:下载服务器端SSL证书
-[点击下载](http://dummy.com)SSL证书至本地。
+[点击下载](http://wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/documents/cert.pem )SSL证书至本地。
 
 ## 步骤 2：配置SSL证书
 您可以通过您熟悉的MySQL客户端或语言进行SSL证书的加载配置，本文列举三种常见的配置方法，供您参考。
