@@ -10,20 +10,19 @@
 在您创建MySQL Database on Azure实例时，我们强烈建议您将数据库实例与其他Azure服务放在同一区域，即使不用SSL加密，也可保障安全性。
 
 
-## 步骤 1:下载服务器端SSL证书
-[点击下载](http://wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/documents/cert.pem )SSL证书至本地。
+## 步骤 1:下载SSL连接的公钥证书
+[点击下载](https://www.wosign.com/root/WS_CA1_NEW.crt)SSL证书至本地。
 
-## 步骤 2：配置SSL证书
-您可以通过您熟悉的MySQL客户端或语言进行SSL证书的加载配置，本文列举三种常见的配置方法，供您参考。
-### 方法一：利用命令行进行配置
-打开mysql.exe, 命令行键入 '--ssl-ca= localpath/certname.pem -u username -p -h hostname' 通过SSL加密访问MySQL Database。
+## 步骤 2：使用SSL来连接MySQL Database on Azure上的服务器
 
+### 利用MySQL客户端进行配置
+以MySQL.exe为例，创建连接时需使用--ssl-ca参数来指定公钥证书。关于SSL连接的更多信息，请参考 Using SSL for Secure Connections。
+参考样例：
+'mysql.exe --ssl-ca=WS_CA1_NEW.crt -h mysqlservices.chinacloudapp.cn -u ssltest%test -p'
 ![mysql.exe访问数据库][1]
 
->**提示** SSL状态中出现Cipher in use即证明加密成功。
+>**提示** 当前证书支持MySQL.exe 5.5.44及其后续版本。
 
-
-### 方法二：利用MySQL客户端进行配置
 以MySQL Workbench为例，通过Parameters标签设置访问数据库的Connection String，如下图所示。
 
 ![配置connection string][2]
@@ -37,11 +36,13 @@
 >![errormessage][4]
 >
 
-### 方法三：利用函数进行配置
+### 利用函数进行配置
 以Python为例，下图是一段示例代码，供参考：
 
 ![python SSL访问][5]
 
+## 步骤 3：验证SSL的连接
+在mysql客户端中，使用status命令。若SSL的参数值为Cipher in use，则成功创建SSL连接；若SSL的参数值为Not in use, 则仍是非SSL连接。
 
 <!--Image references-->
 [1]: ./img/ssl-001.png
