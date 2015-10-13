@@ -3,7 +3,7 @@
 <tags ms.service="mysql" ms.date="" wacn.date="10/14/2015"/>
 
 #使用PowerShell管理MySQL Database on Azure
-MySQL Database on Azure支持您通过PowerShell脚本创建管理删除MySQL服务器、数据库、防火墙原则、用户等，同时支持您通过脚本更改参数设置。本文主要介绍如何使用PowerShell脚本快速创建使用MySQL服务，并简单介绍如何利用脚本删除以及更改MySQL Database on Azure的配置操作。
+MySQL Database on Azure支持您通过PowerShell脚本创建管理删除MySQL服务器、数据库、防火墙原则、用户等，同时支持您通过脚本更改参数设置。本文主要介绍如何使用PowerShell脚本快速创建使用MySQL服务，并简单介绍如何利用脚本查看、删除以及更改MySQL Database on Azure的配置操作。
 
 ##安装Azure PowerShell
 运行脚本前，您需要安装并运行Azure PowerShell。您可以通过[运行Microsft Web平台安装程序](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)下载并安装最新版本Azure PowerShell 。可参阅[如何安装和配置Azure PowerShell](http://www.windowsazure.cn/documentation/articles/powershell-install-configure)来了解更多详细步骤。
@@ -37,16 +37,16 @@ Register-AzureProvider -ProviderNamespace "Microsoft.MySql"
 如果您已有资源组，可以直接创建服务器，或者编辑运行以下命令，创建新的资源组：
 
 ```
-New-AzureResourceGroup -Name "resourcegroupChinaEast" -Location "China East"
+New-AzureResourceGroup -Name "resourcegroupChinaEast" -Location "chinaeast"
 ```
 
->[AZURE.NOTE] ** 注意:Location的默认选项为China North, 处于安全性考虑，强烈建议您将资源组中的服务选择在同一个地域中。**
+>[AZURE.NOTE] ** 注意:Location的默认选项为chinanorth, 处于安全性考虑，强烈建议您将资源组中的服务选择在同一个地域中。**
 
 ##创建服务器
 编辑运行以下命令，定义您的服务器名称、位置、版本等信息来完成服务器创建。
 
 ```
-New-AzureResource -ResourceType "Microsoft.MySql/servers" -ResourceName testPSH -ApiVersion 2015-09-01 -ResourceGroupName resourcegroupChinaEast -Location chinaeast -PropertyObject @{version = '5.5'}
+New-AzureResource -ResourceType "Microsoft.MySql/servers" -ResourceName testPSH -ApiVersion 2015-09-01 -ResourceGroupName resourcegroupChinaEast -Location chinaeast -PropertyObject @{version = '5.5'} -Sku MS3
 ```
 
 >[AZURE.NOTE] ** 注意:“-ApiVersion 2015-09-01”指定了API的版本，是必要的。另外，运行上述命令可以完成MySQL服务器的创建，但没有用户，须在后续步骤中创建用户设置权限，这一点和使用Azure管理门户创建稍有不同**
@@ -80,7 +80,7 @@ New-AzureResource -ResourceType "Microsoft.MySql/servers/databases/privileges" -
 ```
 
 
-#其他创建、删除、修改操作
+#其他创建、删除、修改、查看操作
 通过上述操作，您已经完成了服务器、数据库、用户、防火墙原则等的创建工作，可以开始使用MySQL Database on Azure的数据库服务。通过Azure PowerShell脚本您可以用New, Remove, Set命令针对MySQL六种资源类型servers, databases, users, privileges, firewallRules，backups）进行创建、删除、更改等操作。上文主要介绍了创建操作如何通过脚本实现，下面将介绍如何用脚本Remove指令删除服务器、数据库等以及如何用Set指令修改参数等数据库管理操作。
 通过Remove指令可以进行对以下六种资源类型（servers, databases, users, privileges, firewallRules，backups）进行删除操作。以删除数据库为例：
 ##删除数据库
@@ -95,6 +95,19 @@ Remove-AzureResource -ResourceType "Microsoft.MySql/servers/databases" -Resource
 
 ```
 Set-AzureResource -ResourceType "Microsoft.MySql/servers" -ResourceName testPSH -ApiVersion 2015-09-01 -ResourceGroupName resourcegroupChinaEast -PropertyObject @{options=@{wait_timeout=70}} -UsePatchSemantics
+```
+通过Get指令可以查看当前MySQL服务器、数据库、用户、备份等列表
+##查看服务器列表
+编辑运行以下命令，查看当前所有服务器列表
+```
+Get-AzureResource -ResourceType "Microsoft.MySql/servers"  -ApiVersion 2015-01-01 -ResourceGroupName resourcegroupChinaEast
+```
+>[AZURE.NOTE] ** 注意:与其他指令不同，查看服务器中的“-ApiVersion 2015-01-01”，指向ARM的API，其他指令中，均为“-ApiVersion 2015-09-01”，指向MySQL的API。**
+
+##查看数据库列表
+编辑运行以下命令，查看当前数据库列表
+```
+ Get-AzureResource -ResourceType "Microsoft.MySql/servers/databases" -Name testPSH -ApiVersion 2015-09-01 -ResourceGroupName resourcegroupChinaEast
 ```
 
 #资源类型以及参数列表
