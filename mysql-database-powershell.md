@@ -3,7 +3,7 @@
 <tags ms.service="mysql" ms.date="" wacn.date="10/14/2015"/>
 
 #使用PowerShell管理MySQL Database on Azure
-MySQL Database on Azure支持您通过PowerShell脚本创建管理MySQL服务器、数据库、防火墙、用户等，同时支持您通过脚本更改参数设置，创建数据库备份等功能。本文主要介绍如何使用PowerShell创建MySQL Database on Azure服务器、数据库、防火墙、用户、数据库备份，并以更改MySQL系统参数为例介绍如何使用PowerShell进行更多MySQL Database on Azure的配置操作。
+MySQL Database on Azure支持您通过PowerShell脚本创建管理删除MySQL服务器、数据库、防火墙原则、用户等，同时支持您通过脚本更改参数设置。本文主要介绍如何使用PowerShell脚本快速创建使用MySQL服务，并简单介绍如何利用脚本删除以及更改MySQL Database on Azure的配置操作。
 
 ##安装Azure PowerShell
 运行脚本前，您需要安装并运行Azure PowerShell。您可以通过[运行Microsft Web平台安装程序](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)下载并安装最新版本Azure PowerShell 。可参阅[如何安装和配置Azure PowerShell](http://www.windowsazure.cn/documentation/articles/powershell-install-configure)来了解更多详细步骤。
@@ -31,7 +31,7 @@ Add-AzureAccount -Environment AzureChinaCloud
 Register-AzureProvider -ProviderNamespace "Microsoft.MySql"
 ```
 
-#快速入门创建MySQL数据库服务
+#快速入门创建使用MySQL数据库服务
 
 ##创建资源组
 如果您已有资源组，可以直接创建服务器，或者编辑运行以下命令，创建新的资源组：
@@ -40,7 +40,7 @@ Register-AzureProvider -ProviderNamespace "Microsoft.MySql"
 New-AzureResourceGroup -Name "resourcegroupChinaEast" -Location "China East"
 ```
 
->[AZURE.NOTE] ** 注意:Location的默认选项为China North, 强烈建议您将资源组中的服务选择在同一个地域中。**
+>[AZURE.NOTE] ** 注意:Location的默认选项为China North, 处于安全性考虑，强烈建议您将资源组中的服务选择在同一个地域中。**
 
 ##创建服务器
 编辑运行以下命令，定义您的服务器名称、位置、版本等信息来完成服务器创建。
