@@ -67,7 +67,7 @@ New-AzureResource -ResourceType "Microsoft.MySql/servers/backups" -ResourceName 
 
 ## <a id="view"></a>3. 查看操作
 通过Get指令可以查看当前MySQL服务器、数据库、用户、用户权限、备份、防火墙规则等列表,也可以查看详细参数配置。
-###查看服务器列表
+###3.1 查看服务器列表
 编辑运行以下命令，查看当前所有服务器列表
 
 ```
@@ -75,35 +75,35 @@ Get-AzureResource -ResourceType "Microsoft.MySql/servers"  -ApiVersion 2015-01-0
 ```
 >[AZURE.NOTE] ** 注意:与其他指令不同，查看服务器中的“-ApiVersion 2015-01-01”，指向ARM的API，其他指令中，均为“-ApiVersion 2015-09-01”，指向MySQL的API。**
 
-###3.1 查看数据库列表及参数
+###3.2 查看数据库列表及参数
 编辑运行以下命令，查看当前资源组内某个服务器的所有数据库列表：
 
 ```
  Get-AzureResource -ResourceType "Microsoft.MySql/servers/databases" -Name testPSH -ApiVersion 2015-09-01 -ResourceGroupName resourcegroupChinaEast
 ```
 
-###3.2 查看用户列表及参数
+###3.3 查看用户列表及参数
 编辑运行以下命令，查看当前资源组内某个服务器的所有用户列表：
 
 ```
  Get-AzureResource -ResourceType "Microsoft.MySql/servers/users" -Name testPSH -ApiVersion 2015-09-01 -ResourceGroupName resourcegroupChinaEast
 ```
 
-###3.3 查看用户权限列表及参数
+###3.4 查看用户权限列表及参数
 编辑运行以下命令，查看当前资源组内某个数据库的用户权限：
 
 ```
  Get-AzureResource -ResourceType "Microsoft.MySql/servers/databases/privileges" -Name testPSH/demodb -ApiVersion 2015-09-01 -ResourceGroupName resourcegroupChinaEast
 ```
 
-###3.4 查看备份列表及参数
+###3.5 查看备份列表及参数
 编辑运行以下命令，查看当前资源组内某个服务器的所有备份文件：
 
 ```
  Get-AzureResource -ResourceType "Microsoft.MySql/servers/backups" -Name testPSH -ApiVersion 2015-09-01 -ResourceGroupName resourcegroupChinaEast
 ```
 
-###3.5 查看防火墙规则列表及参数
+###3.6 查看防火墙规则列表及参数
 编辑运行以下命令，查看当前资源组内某个服务器的所有防火墙规则：
 
 ```
