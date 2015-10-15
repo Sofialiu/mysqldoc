@@ -20,7 +20,7 @@
 大多数部署和运行在 Windows Azure 中的应用程序是通过不同云资源类型的组合构建的。Azure资源管理器模板使你能够集中部署和管理这些不同的资源，只需对资源和关联的配置及部署参数进行 JSON 描述即可。
 ###1.1 了解MySQL Database on Azure的资源类型参数信息
 目前，MySQL Database on Azure的Json File中定义了六种资源类型： Servers, Databases, Users, Privileges, FirewallRules, Backups。用户可以通过"Get","New","Set","Remove"指令分别对上述六种资源类型进行查看、创建、修改、删除的操作。
-您可以通过下载[Json模板文件](http://wacnppe.blob.core.chinacloudapi.cn/marketing-resource/2015-09-01.json)来了解更多参数的定义。
+您可以通过下载[Json模板文件](http://wacnppe.blob.core.chinacloudapi.cn/marketing-resource/2015-09-01.json)来了解更多MySQL Database on Azure 服务的API参数定义。
 
 ## <a id="creat"></a>2. 创建操作
 通过New指令可以创建MySQL服务器、数据库、用户、用户权限、备份、防火墙规则等。
@@ -134,7 +134,7 @@ Set-AzureResource -ResourceType "Microsoft.MySql/servers" -ResourceName testPSH 
 ```
 
 ###4.4 修改默认每日备份时间
-编辑运行以下命令，修改指定服务器的默认日备起始时间，0-24可选。
+编辑运行以下命令，修改指定服务器的默认日备起始时间(此处为北京时间UTC+8)，0-24可选。
 
 ```
 Set-AzureResource -ResourceType "Microsoft.MySql/servers" -ResourceName testPSH -ApiVersion 2015-09-01 -ResourceGroupName resourcegroupChinaEast -PropertyObject @{dailyBackupTimeInHour='5'} -UsePatchSemantics
@@ -160,7 +160,58 @@ Set-AzureResource -ResourceType "Microsoft.MySql/servers/firewallRules" -Resourc
 ```
 Set-AzureResource -ResourceType "Microsoft.MySql/servers" -ResourceName testPSH -ApiVersion 2015-09-01 -ResourceGroupName resourcegroupChinaEast -PropertyObject @{options=@{wait_timeout=70}} -UsePatchSemantics
 ```
+对其他参数的修改，可以参考下面Json文件的定义，参数的有效值范围可参考[定制MySQL Database on Azure服务器参数](http://www.windowsazure.cn/documentation/articles/mysql-database-advanced-settings)：
 
+```
+	"options": {
+          "type": "object",
+          "properties": {
+            "div_precision_increment": {
+              "type": "integer"
+            },
+            "event_scheduler": {
+              "type": "string"
+            },
+            "group_concat_max_len": {
+              "type": "integer"
+            },
+            "innodb_adaptive_hash_index": {
+              "type": "string"
+            },
+            "innodb_lock_wait_timeout": {
+              "type": "integer"
+            },
+            "interactive_timeout": {
+              "type": "integer"
+            },
+            "log_bin_trust_function_creators": {
+              "type": "string"
+            },
+            "log_queries_not_using_indexes": {
+              "type": "string"
+            },
+            "long_query_time": {
+              "type": "number"
+            },
+            "max_allowed_packet": {
+              "type": "integer"
+            },
+            "server-id": {
+              "type": "integer"
+            },
+            "slow_query_log": {
+              "type": "string"
+            },
+            "sql_mode": {
+              "type": "string"
+            },
+            "wait_timeout": {
+              "type": "integer"
+            }
+          }
+        }
+```
+	
 ## <a id="delete"></a>5. 删除操作
 通过Remove指令可以删除MySQL服务器、数据库、用户、备份、防火墙规则等。
 ###5.1 删除服务器
