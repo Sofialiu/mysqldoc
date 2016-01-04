@@ -1,6 +1,6 @@
 <properties linkid="" urlDisplayName="" pageTitle="MySQL服务问题 - Azure 微软云" metaKeywords="Azure 云,技术文档,文档与资源,MySQL,数据库,常见问题,Azure MySQL, MySQL PaaS,Azure MySQL PaaS, Azure MySQL Service, Azure RDS,FAQ" description="针对用户在使用MySQL 数据库 on Azure中遇到的一些常见技术问题,提供快速解答。如果您仍存有疑问,欢迎联系技术支持。" metaCanonical="" services="MySQL" documentationCenter="Services" title="" authors="" solutions="" manager="" editor="" />
 
-<tags ms.service="mysql" ms.date="" wacn.date="12/01/2015"/>
+<tags ms.service="mysql" ms.date="" wacn.date="12/22/2015"/>
 #客户端兼容性问题
 > [AZURE.SELECTOR]
 - [全部问题](/documentation/articles/mysql-database-tech-faq)
@@ -8,6 +8,8 @@
 - [连接问题](/documentation/articles/mysql-database-connectioninquiry)
 - [安全性咨询](/documentation/articles/mysql-database-securityinquiry)
 - [兼容性问题](/documentation/articles/mysql-database-compatibilityinquiry)
+
+MySQL Database on Azure采用MySQL 社区版本，兼容MYSQL常见的管理工具。在实际运维当中，我们也发现对于某些客户端的某个版本存在一定的兼容性问题，归纳如下：
 
 ### **用workbench 6.3.5连接MySQL on Azure, 出现连接问题**
 
