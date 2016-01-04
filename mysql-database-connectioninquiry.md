@@ -25,6 +25,10 @@
 	
 为了保证连接可以高效的得到充分利用，我们建议您使用连接池(connection pool)或是长连接(persistent connection)连接数据库。查看[如何高效连接到MySQL Database on Azure](/documentation/articles/mysql-database-connection-pool/);
 
+###**在设置长链接或连接池后，MySQL Database on Azure 访问时快时慢？**
+
+这是因为服务器端会设置超时机制，如果一个连接在一段时间内处于闲置状态（没有任何请求），服务器就会关闭这个链接，以释放不必要的资源占用。因此，为了更好的维护连接池，保障MySQL数据库的访问速度，用户需要在客户端配置验证机制，用以进行连接有效性的验证，保证分配的连接都是有效的，若失效，客户端需重新建立一个新的连接并返回。以Java为例，用户可以参考[JDBC Connection Pool官方介绍文档](https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes)中ValidationQuery的设定。
+
 ### **JDBC连接MySQL on Azure报IllegalArgumentException，错误信息显示“URLDecoder: Illegal hex characters in escape (%) pattern - For input string: ...”。**
 
 这是由于数据库用户名中包含的百分号‘%’在连接字符串的URL中没有被正确地转义。建议使用DriverManager.getConnection(url, username, password)函数并把用户名和密码传入由函数自动处理一些特殊字符的转义。或者可以用‘%25’代替URL字符串中的‘%’进行手工转义。
